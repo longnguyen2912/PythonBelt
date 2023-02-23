@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sasquatch Websighting</title>
+</head>
+<body>
+    <div>
+        <div>
+            <h2>
+                Sasquatch Websighting
+            </h2>
+        </div>
+        <div>
+            <div>{{user.first_name}} {{user.last_name}}</div>
+            <div><a href="/dashboard">Dashboard</a></div>
+            <div><a href="/logout">Logout</a></div>
+        </div>
+    </div>
+    <form action="/newreport" method="post">
+        <div><h2>Report a Sighting</h2></div>
+        {% with messages = get_flashed_messages(category_filter=['sighting']) %}
+            {% if messages %}
+            <div>
+                <strong>Caution</strong>
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+        <div>
+            <div>
+                <div>
+                    <label for="location">Location:</label>
+                    <input type="text" name="location">
+                </div>
+                <div>
+                    <label for="happened">What happened:</label>
+                    <textarea name="happened"  cols="30" rows="5"></textarea>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label for="date">Date of Siting:</label>
+                    <input type="date" name="date">
+                </div>
+                <div>
+                    <label for="NumOfSas"># of Sasquatches:</label>
+                    <input type="number" name="NumOfSas">
+                </div>
+                <div>
+                <input type="submit" value="Report">
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
